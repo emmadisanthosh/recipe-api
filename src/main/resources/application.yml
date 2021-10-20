@@ -1,0 +1,23 @@
+server:
+  port: 8090
+managment:
+  security:
+    enabled:false
+spring:
+ datasource:
+  url: jdbc:h2:mem:h2db
+  initialize: true
+  driverClassName: org.h2.Driver
+  username: sa
+  password: 
+ jpa:
+   database-platform: org.hibernate.dialect.H2Dialect
+   hibernate:
+     ddl-auto: update
+ h2:
+  console:
+    enabled: true
+logging:
+  file.name: application.log
+  level:
+    com.recipe: INFO
