@@ -30,7 +30,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-	private static final Logger logger = LogManager.getLogger(JwtRequestFilter.class);
+	private static final Logger log = LogManager.getLogger(JwtRequestFilter.class);
 
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -45,7 +45,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 	@Override
 	public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		logger.info("Start doFilterInternal() method.");
+		log.info("Start doFilterInternal() method.");
 		try {
 			final String authorizationHeader = request.getHeader("Authorization");
 			String username = null;
@@ -56,7 +56,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 			}
 			if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 				UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-				if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
+				boolean isValid=jwtTokenUtil.validateToken(jwtToken, userDetails);
+				if (isValid) {
 					UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 							userDetails, null, userDetails.getAuthorities());
 					usernamePasswordAuthenticationToken
@@ -65,12 +66,12 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 				}
 			}
 		} catch (ExpiredJwtException e) {
-			logger.error("Access Denied {}", e.getMessage());
+			log.error("Access Denied {}", e.getMessage());
 		} catch (Exception e) {
-			logger.error("Signature Not Matched  {}", e.getMessage());
+			log.error("Signature Not Matched  {}", e.getMessage());
 		}
 		filterChain.doFilter(request, response);
-		logger.info("Exit from doFilterInternal() method.");
+		log.info("Exit from doFilterInternal() method.");
 	}
 
 }

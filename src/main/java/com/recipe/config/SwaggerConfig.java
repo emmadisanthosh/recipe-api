@@ -40,9 +40,8 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo apiInfo() {
-		ApiInfo apiInfo = new ApiInfo(API_TITLE, API_DESCRIPTION, API_VERSION, TERM_OF_SERVICE, CONTACT_NAME, LICENSE,
+		return new ApiInfo(API_TITLE, API_DESCRIPTION, API_VERSION, TERM_OF_SERVICE, CONTACT_NAME, LICENSE,
 				LICENSE_URL);
-		return apiInfo;
 	}
 
 }

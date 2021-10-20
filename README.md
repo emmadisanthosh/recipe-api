@@ -1,11 +1,15 @@
 Application Name: Recipe API
 
-Description : Recipe-api project for recipe management.
+Description : recipe-api project for recipe management.
 
-Technology : Recipe CRUD API implemented using spring boot and Java.
+Recipe CRUD API implemented using Spring Boot, Java and H2 DB.
 
-Spring Boot Version : 2.5.5
-Java Version : 11
+Technologies Used:
+
+i).  Spring Boot Version : 2.5.5
+ii). Java Version : 11
+iii).H2 DB
+iv). Postman
 
 Swagger URL: http://localhost:8090/swagger-ui.html
 
@@ -40,21 +44,21 @@ Generate jwt token and use the generated token to call recipe endpoints.
 
 Recipe Endpoints:
 
-1.For getting all the recipe details.
+2.For getting all the recipe details.
 
-API Endpoint2: http://localhost:8090/recipe/
-
-Method : GET
-
-
-2. For getting single recipe details by specific recipe id.
-
-API Endpoint3: http://localhost:8090/recipe/9
+API Endpoint2: http://localhost:8090/recipes/
 
 Method : GET
 
 
-3. For CREATE new recipe details.
+3. For getting single recipe details by specific recipe id.
+
+API Endpoint3: http://localhost:8090/recipe/5
+
+Method : GET
+
+
+4. For CREATE new recipe details.
 
 API Endpoint4: http://localhost:8090/recipe/
 
@@ -87,7 +91,7 @@ Body:
 }
 
 
-4. For UPDATE an existing recipe details.
+5. For UPDATE an existing recipe details.
 
 API Endpoint5: http://localhost:8090/recipe/1
 
@@ -122,9 +126,9 @@ Body:
     "cookingInstructions": "Heat oil in a large pan over medium heat and add onions, chillies, eggs, and masala in hot oil until onions are translucent, about 10 minutes and mix with rice"
 }
 
-5. For DELETE a existing recipe details.
+6. For DELETE a existing recipe details.
 
-API Endpoint6 : http://localhost:8090/recipe/12
+API Endpoint6 : http://localhost:8090/recipe/1
 
 Method : DELETE
 

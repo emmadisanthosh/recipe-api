@@ -12,10 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  * This class is used to create Recipe Entity
@@ -34,13 +32,9 @@ public class RecipeEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
-	@NotBlank
-	@Size(min = 5, message = "Recipe name should be minimum 5 characters.")
 	@Column(name = "recipe_name")
 	private String name;
 
-	@Min(value = 1, message = "Number of people should be min 1 person")
 	@Column(name = "number_of_people")
 	private Integer numberOfPeople;
 

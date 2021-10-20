@@ -27,7 +27,7 @@ public class ExceptionHanlder {
 	 * @return - custom exception message along with status NOT_FOUND
 	 */
 	@ExceptionHandler(RecordNotFoundException.class)
-	public ResponseEntity<?> recordNotFound(RecordNotFoundException exception, WebRequest request) {
+	public ResponseEntity<Object> recordNotFound(RecordNotFoundException exception, WebRequest request) {
 		ErrorResponse error = new ErrorResponse("No Records Found in Database for RecipeId", LocalDateTime.now(),
 				HttpStatus.NOT_FOUND.value());
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
@@ -40,7 +40,7 @@ public class ExceptionHanlder {
 	 * @return custom exception message along with status BAD_REQUEST
 	 */
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<?> handleCustomValidations(MethodArgumentNotValidException exception) {
+	public ResponseEntity<Object> handleCustomValidations(MethodArgumentNotValidException exception) {
 		ErrorResponse error = new ErrorResponse(exception.getBindingResult().getFieldError().getDefaultMessage(),
 				LocalDateTime.now(), HttpStatus.BAD_REQUEST.value());
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
@@ -54,7 +54,7 @@ public class ExceptionHanlder {
 	 */
 
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<?> handleAllExcpetion(Exception exception, WebRequest request) {
+	public ResponseEntity<Object> handleAllExcpetion(Exception exception, WebRequest request) {
 		ErrorResponse error = new ErrorResponse(exception.getMessage(), LocalDateTime.now(),
 				HttpStatus.INTERNAL_SERVER_ERROR.value());
 		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);

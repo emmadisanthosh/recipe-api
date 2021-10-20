@@ -44,7 +44,7 @@ public class UserAuthenticationController {
 	 * @throws Exception BadCredentialsException
 	 */
 	@PostMapping("/authenticate")
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody UserAuthenticationRequest authenticationRequest) {
+	public ResponseEntity<Object> createAuthenticationToken(@RequestBody UserAuthenticationRequest authenticationRequest) {
 		logger.info("Start createAuthenticationToken() method ");
 		authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
 				authenticationRequest.getPassword()));
